@@ -15,14 +15,19 @@ public class HomeController {
     public HomeController(StudentService studentService) {
         this.studentService = studentService;
     }
-
     //вывод списка студентов
     @GetMapping("/")
+    public String mainPage(){
+        return "home";
+    }
+
+    //вывод списка студентов
+    @GetMapping("/main")
     public String homePage(Model model){
         Iterable<Student> students = studentService.findAll();
         model.addAttribute("title", "home page");
         model.addAttribute("student", students);
-        return "home";
+        return "main";
     }
     //Добавление студента
     @PostMapping("/addStudent")
@@ -30,7 +35,7 @@ public class HomeController {
                               @RequestParam String sureName,
                               @RequestParam String studentGroup){
         studentService.addStudent(name,sureName,studentGroup);
-        return "redirect:/";
+        return "redirect:/main";
     }
 
 }

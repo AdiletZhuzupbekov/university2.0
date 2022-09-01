@@ -5,18 +5,8 @@
     <title th:title="title"></title>
 </head>
 <body>
+<a href="/main">main page</a>
 <h2 th:text="${title}"></h2>
-<form action="/addStudent" method="post">
-    <input type="text" name="name"  placeholder="введите имя"/>
-    <input type="text" name="sureName" placeholder="введите фамилию"/>
-    <input type="text" name="studentGroup" placeholder="введите группу"/>
-    <button type="submit">Добавить</button>
-</form>
 
-    <div th:each="student:${student}">
-        <b th:text="${student.name}"></b>
-        <span th:text="${student.sureName}"></span>
-        <b th:text="${student.studentGroup}"></b>
-    </div>
 </body>
 </html>
